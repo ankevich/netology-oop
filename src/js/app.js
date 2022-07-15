@@ -3,15 +3,15 @@ class Character {
     if (name.length > 2 && name.length < 10) {
       this.name = name;
     } else {
-      throw new Error("Имя должно быть от 2 до 10 символов");
+      throw new Error('Имя должно быть от 2 до 10 символов');
     }
-    
-    const types = ["Bowman", "Swordsman", "Magician", "Daemon", "Undead", "Zombie"];
+
+    const types = ['Bowman', 'Swordsman', 'Magician', 'Daemon', 'Undead', 'Zombie'];
     if (types.includes(type)) {
       this.type = type;
     } else {
       throw new Error(
-        "Тип должен быть отдним из: Bowman, Swordsman, Magician, Daemon, Undead, Zombie"
+        'Тип должен быть отдним из: Bowman, Swordsman, Magician, Daemon, Undead, Zombie',
       );
     }
 
@@ -19,28 +19,28 @@ class Character {
     this.level = 1;
   }
 
-  levelUp = () => {
+  levelUp() {
     if (this.health < 1) {
-      throw new Error("Нельзя повысить левел умершего");
+      throw new Error('Нельзя повысить левел умершего');
     }
     this.level += 1;
     this.attack += (this.attack * 20) / 100;
     this.defence += (this.defence * 20) / 100;
     this.health = 100;
-  };
+  }
 
-  damage = (points) => {
+  damage(points) {
     if (this.health >= 0) {
       this.health -= points * (1 - this.defence / 100);
     } else {
-      throw new Error("Персонаж мёрт");
+      throw new Error('Персонаж мёрт');
     }
-  };
+  }
 }
 
 class Bowman extends Character {
   constructor(name) {
-    super(name, "Bowman");
+    super(name, 'Bowman');
     this.attack = 25;
     this.defence = 25;
   }
@@ -48,7 +48,7 @@ class Bowman extends Character {
 
 class Swordsman extends Character {
   constructor(name) {
-    super(name, "Bowman");
+    super(name, 'Bowman');
     this.attack = 40;
     this.defence = 10;
   }
@@ -56,7 +56,7 @@ class Swordsman extends Character {
 
 class Magician extends Character {
   constructor(name) {
-    super(name, "Magician");
+    super(name, 'Magician');
     this.attack = 10;
     this.defence = 10;
   }
@@ -64,7 +64,7 @@ class Magician extends Character {
 
 class Undead extends Character {
   constructor(name) {
-    super(name, "Undead");
+    super(name, 'Undead');
     this.attack = 25;
     this.defence = 25;
   }
@@ -72,7 +72,7 @@ class Undead extends Character {
 
 class Zombie extends Character {
   constructor(name) {
-    super(name, "Zombie");
+    super(name, 'Zombie');
     this.attack = 40;
     this.defence = 10;
   }
@@ -80,23 +80,12 @@ class Zombie extends Character {
 
 class Daemon extends Character {
   constructor(name) {
-    super(name, "Daemon");
+    super(name, 'Daemon');
     this.attack = 10;
     this.defence = 40;
   }
 }
 
-export { Character, Bowman, Swordsman, Magician, Daemon, Undead, Zombie };
-
-
-/*
-const dimon = new Daemon("Dimon");
-console.log(
-  `Dimon(lvl ${dimon.level}) health: ${dimon.health} attack: ${dimon.attack} defense: ${dimon.defence}`
-  );
-  
-dimon.levelUp();
-console.log(
-  `Dimon(${dimon.level}) health: ${dimon.health} attack: ${dimon.attack} defense: ${dimon.defence}`
-);
-*/
+export {
+  Character, Bowman, Swordsman, Magician, Daemon, Undead, Zombie,
+};
